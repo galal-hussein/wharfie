@@ -20,6 +20,12 @@ jobs:
       env:
         CROSS: "true"
 
+    - name: Checksum
+      run: |
+        make checksum
+      env:
+        ARCH: amd64
+
     - name: release binaries
       uses: softprops/action-gh-release@v2
       with:
