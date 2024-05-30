@@ -12,13 +12,10 @@ function checksum(){
     sumfile="${CHECKSUM_DIR}/sha256sum-${ARCH}.txt"
     echo -n "" > "${sumfile}"
 
-    files=$(ls ${CHECKSUM_DIR})
+    files=$(ls ${CHECKSUM_DIR} | grep "${ARCH}")
     for file in ${files}; do
       sha256sum "${file}" | sed "s;$(dirname ${file})/;;g" >> "${sumfile}"
     done
 
     cat "${sumfile}"
 }
-
-
-checksum
